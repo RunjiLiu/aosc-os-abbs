@@ -2,12 +2,22 @@ PKGNAME=pcl
 PKGSEC=libs
 PKGDEP="gcc-runtime glibc boost libpcap libpng libusb lz4 qhull \
         vtk x11-lib flann"
-BUILDDEP="eigen-3"
+BUILDDEP="eigen"
 PKGDES="The Portable Coroutine Library (PCL)"
 
 CMAKE_AFTER=(
-    -DPCL_FLANN_REQUIRED_TYPE=SHARED
-    -DPCL_QHULL_REQUIRED_TYPE=SHARED
+    "-DPCL_FLANN_REQUIRED_TYPE=SHARED"
+    "-DPCL_QHULL_REQUIRED_TYPE=SHARED"
+    "-DBUILD_apps=ON"
+    "-DBUILD_apps_3d_rec_framework=ON"
+    "-DBUILD_apps_cloud_composer=ON"
+    "-DBUILD_apps_in_hand_scanner=ON"
+    "-DBUILD_apps_modeler=ON"
+    "-DBUILD_apps_point_cloud_editor=ON"
+    "-DBUILD_outofcore=OFF"
+    "-DBUILD_simulation=ON"
+    "-DUSE_UMFPACK=ON"
+    "-DWITH_QT=QT6"
 )
 
 ABTYPE=cmakeninja

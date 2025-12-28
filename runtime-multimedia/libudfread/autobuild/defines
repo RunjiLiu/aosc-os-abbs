@@ -2,3 +2,7 @@ PKGNAME=libudfread
 PKGDES="A UDF Reader library"
 PKGDEP="glibc"
 PKGSEC="libs"
+
+ABTYPE=meson
+
+PKGBREAK="kodi<=21.3"

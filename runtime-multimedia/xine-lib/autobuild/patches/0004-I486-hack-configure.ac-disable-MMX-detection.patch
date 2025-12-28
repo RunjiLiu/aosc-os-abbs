@@ -1,0 +1,32 @@
+From fbeaa04358b51667503c077dbb6f4deceb2e099d Mon Sep 17 00:00:00 2001
+From: Mingcong Bai <jeffbai@aosc.io>
+Date: Tue, 3 Sep 2024 22:38:00 +0800
+Subject: [PATCH 4/6] [I486] hack(configure.ac): disable MMX detection
+
+Our i486 port is strictly an 80486 port.
+---
+ configure.ac | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index cbd93bb..3aaaa1c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1157,14 +1157,12 @@ AC_SUBST(DEFAULT_OCFLAGS)
+ 
+ if test x"$arch_x86" != x"no" && test x"$enable_macosx_universal" = x"no"; then
+      AC_DEFINE([ARCH_X86], [], [Define this if you're running x86 architecture])
+-     AC_DEFINE([HAVE_MMX], [], [Define this if you can compile MMX asm instructions])
+ fi
+ AM_CONDITIONAL([ARCH_PPC], test x"$arch_ppc" = x"yes")
+ AM_CONDITIONAL([ARCH_X86], test x"$arch_x86" != x"no")
+ AM_CONDITIONAL([ARCH_X86_32], test x"$arch_x86" = x"32")
+ AM_CONDITIONAL([ARCH_X86_X32], test x"$arch_x86" = x"x32")
+ AM_CONDITIONAL([ARCH_X86_64], test x"$arch_x86" = x"64")
+-AM_CONDITIONAL([HAVE_MMX], test x"$arch_x86" != x"no")
+ AM_CONDITIONAL([HOST_OS_DARWIN], test x"$HOST_OS_DARWIN" = x"1")
+ 
+ if test x"$enable_impure_text" = x"yes"; then
+-- 
+2.52.0
+
